@@ -35,6 +35,19 @@ lint:
 	bin/ameba
 
 
+# TESTING
+# ~~~~~~~
+# The following rules can be used to trigger tests execution and produce coverage reports.
+# --------------------------------------------------------------------------------------------------
+
+.PHONY: t tests
+## Alias of "tests".
+t: tests
+## Run all the test suites.
+tests:
+	env KEMAL_ENV=test crystal spec
+
+
 # MAKEFILE HELPERS
 # ~~~~~~~~~~~~~~~~
 # The following rules can be used to list available commands and to display help messages.

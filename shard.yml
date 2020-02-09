@@ -19,6 +19,9 @@ development_dependencies:
     github: samueleaton/sentry
     branch: master
     version: ~> 0.3.0
+  spec-kemal:
+    github: kemalcr/spec-kemal
+    branch: master
 
 crystal: 0.32.1
 
