@@ -1,0 +1,17 @@
+name: quoted
+version: 0.1.0.dev0
+
+authors:
+  - Morgan Aubert <me@morganaubert.name>
+
+targets:
+  your_app:
+    main: src/your_app.cr
+
+dependencies:
+  kemal:
+    github: kemalcr/kemal
+
+crystal: 0.32.1
+
+license: MIT
