@@ -17,7 +17,7 @@ init:
 s: server
 ## Launch a development server.
 server:
-	crystal run src/quoted.cr
+	crystal run src/sentry.cr
 
 
 # QUALITY ASSURANCE
