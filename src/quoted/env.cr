@@ -1,6 +1,6 @@
 module Quoted
   class Env
-    def ==(value)
+    def ==(value : String) : Bool
       env_id == value
     end
 
