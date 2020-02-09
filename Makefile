@@ -20,6 +20,21 @@ server:
 	crystal run src/quoted.cr
 
 
+# QUALITY ASSURANCE
+# ~~~~~~~~~~~~~~~~~
+# The following rules can be used to check code quality and perform sanity checks.
+# --------------------------------------------------------------------------------------------------
+
+.PHONY: qa
+## Trigger all quality assurance checks.
+qa: lint
+
+.PHONY: lint
+## Trigger code quality checks.
+lint:
+	bin/ameba
+
+
 # MAKEFILE HELPERS
 # ~~~~~~~~~~~~~~~~
 # The following rules can be used to list available commands and to display help messages.
