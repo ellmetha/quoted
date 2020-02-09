@@ -2,6 +2,6 @@ require "kemal"
 
 module Quoted
   get "/" do
-    "Hello World!"
+    render "src/views/quote.ecr"
   end
 end
