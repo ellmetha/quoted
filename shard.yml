@@ -22,6 +22,9 @@ development_dependencies:
   spec-kemal:
     github: kemalcr/spec-kemal
     branch: master
+  webmock:
+    github: manastech/webmock.cr
+    branch: master
 
 crystal: 0.32.1
 
