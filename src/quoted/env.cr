@@ -1,7 +1,11 @@
 module Quoted
   class Env
     def ==(value : String) : Bool
-      env_id == value
+      id == value
+    end
+
+    def id
+      @id ||= ENV["KEMAL_ENV"]? || "development"
     end
 
     macro method_missing(call)
@@ -9,10 +13,6 @@ module Quoted
         return self.==("{{ call.name[0..-2] }}")
       {% end %}
       super
-    end
-
-    private def env_id
-      @env_id = ENV["KEMAL_ENV"]? || "development"
     end
   end
 

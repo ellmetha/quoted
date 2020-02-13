@@ -20,4 +20,10 @@ describe Quoted::Env do
       (Quoted::Env.new == "dummy").should be_false
     end
   end
+
+  describe "#id" do
+    it "returns the environment identifier" do
+      Quoted::Env.new.id.should eq "test"
+    end
+  end
 end

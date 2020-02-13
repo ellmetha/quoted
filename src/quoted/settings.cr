@@ -9,7 +9,7 @@ module Quoted
 
   def self.settings
     @@settings ||= Settings.from_yaml(
-      File.open("config/settings/#{ENV["KEMAL_ENV"]? || "development"}.yml")
+      File.open("config/settings/#{env.id}.yml")
     )
   end
 end
