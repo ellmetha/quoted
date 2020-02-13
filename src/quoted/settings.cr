@@ -3,7 +3,7 @@ require "yaml"
 module Quoted
   class Settings
     YAML.mapping(
-      foo: String,
+      public_folder: String,
     )
   end
 
