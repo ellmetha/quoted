@@ -3,3 +3,6 @@
 /bin/
 /.shards/
 *.dwarf
+config/secrets/*.yml
+!config/secrets/development.example.yml
+!config/secrets/test.yml
