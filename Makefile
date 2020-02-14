@@ -48,6 +48,13 @@ tests:
 	env KEMAL_ENV=test crystal spec
 
 
+.PHONY: coverage
+## Collects code coverage data.
+coverage:
+	crystal build run_tests.cr
+	kcov --clean --collect-only --include-path=./src ./coverage ./run_tests
+
+
 # MAKEFILE HELPERS
 # ~~~~~~~~~~~~~~~~
 # The following rules can be used to list available commands and to display help messages.

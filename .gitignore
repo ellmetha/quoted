@@ -6,3 +6,5 @@
 config/secrets/*.yml
 !config/secrets/development.example.yml
 !config/secrets/test.yml
+/run_tests
+/coverage
