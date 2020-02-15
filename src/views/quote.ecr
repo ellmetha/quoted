@@ -1,4 +1,10 @@
 <% content_for "title" do %>Quoted - Get a random quote mapped to a inspiring image<% end %>
 <% content_for "description" do %>Quoty is a simple web application allowing to browse random quotes mapped to inspiring images.<% end %>
 
-HELLO
+<ul>
+  <li>Body: <%= quote.body %></li>
+  <li>Author: <%= quote.author %></li>
+  <li>Large image URL: <%= quote.large_image_url %></li>
+  <li>Medium image URL: <%= quote.medium_image_url %></li>
+  <li>Tag: <%= quote.tag %></li>
+</ul>
