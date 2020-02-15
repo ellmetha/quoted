@@ -22,7 +22,12 @@ module Quoted
       end
 
       private def get(path, **params)
-        params = HTTP::Params.encode(params)
+        params = HTTP::Params.encode(
+          params.to_h.transform_keys { |k| k.to_s }.merge(
+            { "key" => Quoted.secrets.pixabay_api_key }
+          )
+        )
+
         response = client.get(
           forge_path(path) + "?#{params}",
           headers: HTTP::Headers{"Content-Type" => "application/json"}
