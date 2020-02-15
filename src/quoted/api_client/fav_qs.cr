@@ -1,3 +1,4 @@
+require "http/client"
 require "json"
 
 module Quoted
@@ -20,9 +21,10 @@ module Quoted
         [ENDPOINT_BASE_PATH, path].join('/').squeeze('/')
       end
 
-      private def get(path, params = nil)
+      private def get(path, **params)
+        params = HTTP::Params.encode(params)
         response = client.get(
-          forge_path(path),
+          forge_path(path) + "?#{params}",
           headers: HTTP::Headers{"Content-Type" => "application/json"}
         )
 
