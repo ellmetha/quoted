@@ -23,7 +23,7 @@ module Quoted
 
       private def get(path, **params)
         params = HTTP::Params.encode(
-          params.to_h.transform_keys { |k| k.to_s }.merge(
+          params.to_h.transform_keys(&.to_s).transform_values(&.to_s).merge(
             { "key" => Quoted.secrets.pixabay_api_key }
           )
         )
