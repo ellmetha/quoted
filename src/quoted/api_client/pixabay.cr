@@ -3,14 +3,14 @@ require "json"
 
 module Quoted
   module ApiClient
-    class FavQs
+    class Pixabay
       class UnexpectedResponseError < Exception; end
 
-      def qotd
-        get("qotd")
+      def search(**params)
+        get("/", **params)
       end
 
-      private ENDPOINT_HOST = "favqs.com"
+      private ENDPOINT_HOST = "pixabay.com"
       private ENDPOINT_BASE_PATH = "/api"
 
       private def client
@@ -22,7 +22,11 @@ module Quoted
       end
 
       private def get(path, **params)
-        params = HTTP::Params.encode(params)
+        params = HTTP::Params.encode(
+          params.to_h.transform_keys { |k| k.to_s }.merge(
+            { "key" => Quoted.secrets.pixabay_api_key }
+          )
+        )
 
         response = client.get(
           forge_path(path) + "?#{params}",
