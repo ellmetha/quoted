@@ -10,7 +10,7 @@ module Quoted
       quote = ApiClient::FavQs.new.qotd
 
       available_tags = quote["quote"]["tags"]
-      chosen_tag = available_tags.size ? available_tags.as_a.first : DEFAULT_IMAGE_QUERY
+      chosen_tag = available_tags.size > 0 ? available_tags.as_a.first : DEFAULT_IMAGE_QUERY
 
       images = ApiClient::Pixabay.new.search(
         q: chosen_tag,

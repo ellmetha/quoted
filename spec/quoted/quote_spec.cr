@@ -7,12 +7,14 @@ describe Quoted::Quote do
         body: "All war is based on deception.",
         author: "Sun Tzu",
         large_image_url: "https://example.com/sun-tzu/1-large.jpg",
-        medium_image_url: "https://example.com/sun-tzu/1-medium.jpg"
+        medium_image_url: "https://example.com/sun-tzu/1-medium.jpg",
+        tag: "war"
       )
       quote.body.should eq "All war is based on deception."
       quote.author.should eq "Sun Tzu"
       quote.large_image_url.should eq "https://example.com/sun-tzu/1-large.jpg"
       quote.medium_image_url.should eq "https://example.com/sun-tzu/1-medium.jpg"
+      quote.tag.should eq "war"
     end
   end
 end
