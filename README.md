@@ -4,9 +4,6 @@ Quoted is a pet project where random quotes are being matched to corresponding i
 this project in order to discover the [Crystal](https://crystal-lang.org/) language and to 
 experiment with the [Kemal](https://kemalcr.com/) micro framework.
 
-.. contents:: Table of Contents
-  :local:
-
 ## System requirements
 
 * [Crystal](https://crystal-lang.org/) 0.32+
@@ -22,7 +19,7 @@ $ make
 ```
 
 This command will take care of installing the dependencies and initializing the environment-specific 
-configuration configuration.
+configuration.
 
 ## Running the development server
 
