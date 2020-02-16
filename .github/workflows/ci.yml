@@ -32,7 +32,7 @@ jobs:
     - uses: codecov/codecov-action@v1
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
-        file: ./coverage/run_tests.b3c97a0df75a07da/coverage.json
+        file: ./coverage/run_tests.*/coverage.json
         flags: unittests
         name: codecov-umbrella
         yml: ./.codecov.yml
