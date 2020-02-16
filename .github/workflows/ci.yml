@@ -7,11 +7,22 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    container:
-      image: crystallang/crystal
-
     steps:
     - uses: actions/checkout@v2
+    - uses: MeilCli/setup-crystal-action@v1
+      with:
+        crystal_version: 0.33.0
+        shards_version: 0.9.0
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Install kcov
+      run: |
+        sudo apt-get -yqq install libcurl4-openssl-dev libelf-dev libdw-dev binutils-dev libiberty-dev
+        wget https://github.com/SimonKagstrom/kcov/archive/master.tar.gz
+        tar xzf master.tar.gz
+        cd kcov-master
+        mkdir build && cd build
+        cmake .. && make
+        make install
     - name: Install dependencies
       run: shards install
     - name: Run QA checks
