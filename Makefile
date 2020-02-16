@@ -1,4 +1,8 @@
 init:
+	@printf "${YELLOW}---------------- Initialization ---${RESET} ${GREEN}Environment settings${RESET}\n\n"
+
+	rsync --ignore-existing config/secrets/development.example.yml config/secrets/development.yml
+
 	@printf "\n\n${YELLOW}---------------- Initialization ---${RESET} ${GREEN}Crystal dependencies${RESET}\n\n"
 
 	shards install
