@@ -22,7 +22,9 @@ $ make
 ```
 
 This command will take care of installing the dependencies and initializing the environment-specific 
-configuration.
+configuration. It should be noted that a [Pixabay API token](https://pixabay.com/api/docs/) is
+needed in order for the application to perform images lookups: once you get one you'll have to
+put it in the `pixabay_api_key` option in the `config/secrets/development.yml` file.
 
 ## Running the development server
 
