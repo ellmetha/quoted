@@ -1,5 +1,8 @@
 # Quoted
 
+[![Build Status](https://github.com/ellmetha/quoted/workflows/CI/badge.svg?branch=master)](https://github.com/ellmetha/quoted/actions)
+[![codecov](https://codecov.io/gh/ellmetha/quoted/branch/master/graph/badge.svg)](https://codecov.io/gh/ellmetha/quoted)
+
 Quoted is a pet project where random quotes are being matched to corresponding images. I worked on
 this project in order to discover the [Crystal](https://crystal-lang.org/) language and to 
 experiment with the [Kemal](https://kemalcr.com/) micro framework.
