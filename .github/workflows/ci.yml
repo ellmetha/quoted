@@ -22,7 +22,7 @@ jobs:
         cd kcov-master
         mkdir build && cd build
         cmake .. && make
-        make install
+        sudo make install
     - name: Install dependencies
       run: shards install
     - name: Run QA checks
@@ -32,3 +32,8 @@ jobs:
     - uses: codecov/codecov-action@v1
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
+        file: ./coverage/run_tests/coverage.json
+        flags: unittests
+        name: codecov-umbrella
+        yml: ./.codecov.yml
+        fail_ci_if_error: true
