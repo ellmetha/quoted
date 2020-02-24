@@ -18,11 +18,13 @@ module Quoted
         min_height: IMAGE_MIN_HEIGHT
       )
 
+      image_hit = images["hits"].as_a.sample(1)[0]
+
       new(
         body: quote["quote"]["body"].as_s,
         author: quote["quote"]["author"].as_s,
-        large_image_url: images["hits"][0]["largeImageURL"].as_s,
-        medium_image_url: images["hits"][0]["webformatURL"].as_s,
+        large_image_url: image_hit["largeImageURL"].as_s,
+        medium_image_url: image_hit["webformatURL"].as_s,
         tag: chosen_tag.to_s
       )
     end

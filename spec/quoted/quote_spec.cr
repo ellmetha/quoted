@@ -91,10 +91,6 @@ def pixabay_search_response
         webformatURL: "https://example.com/image/1/medium.jpg",
         largeImageURL: "https://example.com/image/1/large.jpg",
       },
-      {
-        webformatURL: "https://example.com/image/2/medium.jpg",
-        largeImageURL: "https://example.com/image/2/large.jpg",
-      },
     ],
   }
 end
