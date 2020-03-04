@@ -15,8 +15,4 @@ module Quoted
       super
     end
   end
-
-  def self.env
-    @@env ||= Env.new
-  end
 end

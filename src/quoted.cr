@@ -13,5 +13,19 @@ module Quoted
     @@cache ||= Cache.new
   end
 
+  def self.env
+    @@env ||= Env.new
+  end
+
+  def self.secrets
+    @@secrets ||= Secrets.from_yaml(File.open("config/secrets/#{env.id}.yml"))
+  end
+
+  def self.settings
+    @@settings ||= Settings.from_yaml(
+      File.open("config/settings/#{env.id}.yml")
+    )
+  end
+
   Kemal.run
 end
