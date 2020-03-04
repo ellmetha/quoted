@@ -12,11 +12,18 @@ module Quoted
       available_tags = quote["quote"]["tags"]
       chosen_tag = available_tags.size > 0 ? available_tags.as_a.first : DEFAULT_IMAGE_QUERY
 
-      images = ApiClient::Pixabay.new.search(
-        q: chosen_tag,
-        min_width: IMAGE_MIN_WIDTH,
-        min_height: IMAGE_MIN_HEIGHT
-      )
+      images_cache_key = "images-#{chosen_tag}"
+      images = Quoted.cache.get(images_cache_key)
+      if images.nil?
+        images = ApiClient::Pixabay.new.search(
+          q: chosen_tag,
+          min_width: IMAGE_MIN_WIDTH,
+          min_height: IMAGE_MIN_HEIGHT
+        )
+        Quoted.cache.set(images_cache_key, images.to_json, 60 * 10)
+      else
+        images = JSON.parse(images)
+      end
 
       image_hit = images["hits"].as_a.sample(1)[0]
 
@@ -35,5 +42,13 @@ module Quoted
     private DEFAULT_IMAGE_QUERY = "quote"
     private IMAGE_MIN_WIDTH = 2000
     private IMAGE_MIN_HEIGHT = 1100
+
+    private def self.get_images(tag)
+      redis_client.new
+    end
+
+    private def self.redis_client
+      @@redis_client ||= Redis.new
+    end
   end
 end
