@@ -9,3 +9,4 @@ config/secrets/*.yml
 !config/secrets/test.yml
 /run_tests
 /coverage
+.icr_*
