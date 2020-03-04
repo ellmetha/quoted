@@ -40,7 +40,7 @@ describe Quoted::Quote do
     it "reuses images that were already fetches for a given tag" do
       Quoted.cache.set("images-dummy", pixabay_search_response.to_json, 60 * 10)
       WebMock.stub(:get, "https://favqs.com/api/qotd")
-        .to_return(status: 200, body: fav_qs_qotd_response(["dummy"]).to_json)
+        .to_return(status: 200, body: fav_qs_qotd_response(tags: ["dummy"]).to_json)
 
       quote = Quoted::Quote.random
       quote.body.should eq "If there is not the war..."
@@ -52,7 +52,7 @@ describe Quoted::Quote do
 
     it "fallbaks to a default image search keyword if the quote has no tags defined" do
       WebMock.stub(:get, "https://favqs.com/api/qotd")
-        .to_return(status: 200, body: fav_qs_qotd_without_tags_response.to_json)
+        .to_return(status: 200, body: fav_qs_qotd_response(tags: [] of String).to_json)
       WebMock.stub(
         :get,
         "https://pixabay.com/api/?q=quote&min_width=2000&min_height=1100" \
@@ -68,42 +68,4 @@ describe Quoted::Quote do
       quote.tag.should eq "quote"
     end
   end
-end
-
-def fav_qs_qotd_response(tags = nil)
-  {
-    qotd_date: "2020-02-17T00:00:00.000+00:00",
-    quote: {
-      id: 42,
-      tags: tags || ["great", "peace", "time", "war"],
-      url: "https://favqs.com/quotes/theodore-roosevelt/29154-if-there-is-n-",
-      author: "Theodore Roosevelt",
-      body: "If there is not the war...",
-    },
-  }
-end
-
-def fav_qs_qotd_without_tags_response
-  {
-    qotd_date: "2020-02-17T00:00:00.000+00:00",
-    quote: {
-      id: 42,
-      tags: [] of String,
-      url: "https://favqs.com/quotes/theodore-roosevelt/29154-if-there-is-n-",
-      author: "Theodore Roosevelt",
-      body: "If there is not the war...",
-    },
-  }
-end
-
-def pixabay_search_response
-  {
-    total: 2,
-    hits: [
-      {
-        webformatURL: "https://example.com/image/1/medium.jpg",
-        largeImageURL: "https://example.com/image/1/large.jpg",
-      },
-    ],
-  }
 end
