@@ -1,5 +1,3 @@
-require "kemal"
-
 module Quoted
   get "/" do
     quote = Quote.random # ameba:disable Lint/UselessAssign

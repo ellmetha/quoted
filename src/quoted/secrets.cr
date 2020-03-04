@@ -1,5 +1,3 @@
-require "yaml"
-
 module Quoted
   class Secrets
     YAML.mapping(

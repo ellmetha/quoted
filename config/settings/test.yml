@@ -1,3 +1,4 @@
 ---
 
+redis_database: 1
 public_folder: "./static"

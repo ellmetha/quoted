@@ -1,6 +1,3 @@
-require "http/client"
-require "json"
-
 module Quoted
   module ApiClient
     class FavQs
